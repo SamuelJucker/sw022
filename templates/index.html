@@ -6,6 +6,7 @@
     <title>Flask App</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
 </head>
 <body>
     <div class="container mt-5">
@@ -23,22 +24,5 @@
         </form>
         <div id="response" class="mt-3 text-center"></div>
     </div>
-
-    <script>
-        document.getElementById('userForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const formData = new FormData(this);
-            fetch('/calculate', {
-                method: 'POST',
-                body: formData,
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('response').innerHTML = `
-                    <p>${data.message}</p>
-                `;
-            });
-        });
-    </script>
 </body>
 </html>

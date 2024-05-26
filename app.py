@@ -9,8 +9,9 @@ def index():
 
 @app.route('/calculate', methods=['POST'])
 def calculate():
-    name = request.form['name']
-    age = int(request.form['age'])
+    data = request.get_json()
+    name = data['name']
+    age = int(data['age'])
     current_year = datetime.now().year
     year_turn_100 = current_year + (100 - age)
     response = {
